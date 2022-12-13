@@ -45,13 +45,13 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col p-8 bg-gradient-to-r from-blue-400 to-sky-700">
+    <div className="w-screen min-h-screen flex flex-col p-8 bg-gradient-to-r from-blue-400 to-sky-700">
       <div className="h-16 w-full items-center">
         <button
           onClick={() =>
             setOutputValue(convertToAsterisks(inputValue, percentage))
           }
-          className="bg-white/90 hover:bg-white/75 text-sky-700 font-bold py-2 px-4 rounded"
+          className="bg-white/90 select-none hover:bg-white/75 text-sky-700 font-bold py-2 px-4 rounded"
         >
           Convert
         </button>
@@ -62,23 +62,26 @@ function App() {
           value={percentage}
           onChange={(event) => setPercentage(parseInt(event.target.value, 10))}
         />
-        <label htmlFor="percentage" className="pl-4 text-white">
+        <label htmlFor="percentage" className="select-none pl-4 text-white">
           Mask percentage
         </label>
       </div>
       <div className="max-md:flex-col flex w-full h-full">
         <textarea
           placeholder="Paste your paragraph here..."
-          className="flex-grow-1 w-full rounded border border-gray-400 px-4 py-2"
+          className="flex-grow-1 w-full rounded border min-h-[80vh] border-gray-400 px-4 py-2"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <div className="w-8 h-full" />
+        <div className="w-8 max-md:h-8 h-full" />
         <textarea
           placeholder="***** your ********* here..."
-          className="flex-grow-1 w-full rounded border border-gray-400 px-4 py-2"
+          className="flex-grow-1 w-full rounded border min-h-[80vh] border-gray-400 px-4 py-2"
           value={outputValue}
         />
+      </div>
+      <div className="fixed select-none bottom-2 right-2 text-xs text-black/75">
+        made by: Yorun Gar
       </div>
     </div>
   );
